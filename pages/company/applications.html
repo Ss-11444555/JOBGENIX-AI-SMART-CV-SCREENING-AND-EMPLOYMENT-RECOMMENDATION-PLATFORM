@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Applications · JobGenix AI</title>
+
+    <!-- Base -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css" />
+    <link rel="stylesheet" href="/css/pages/company/applications.css" />
+</head>
+<body class="company-layout pushed" id ="main-content">
+
+         <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/jobs/create.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/post_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Post Job</span>
+            </a>
+            <a href="/pages/company/jobs/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/my_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">My Jobs</span>
+            </a>
+            <a href="/pages/company/candidates/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/candidate.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Candidates</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/applications.html" class="nav-item active">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/company/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="/pages/company/settings/profile.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+    <header class="top-bar">
+        <div class="top-bar-left">
+        <div class="header-row-container">
+            <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+            </button>
+        </div>
+            <div class="header-text-group">
+                <h1 class="page-title">Applications</h1>
+                <p class="page-subtitle">Review applicants, match scores, and move them through your funnel.</p>
+            </div>
+        </div>
+
+            <div class="top-bar-actions">
+                <button class="btn btn-secondary" id="refreshApplications">Refresh</button>
+            </div>
+    </header>
+    <!-- MAIN -->
+    <main class="content-section">
+        <section class="analytics-grid">
+            <article class="stat-card">
+                <div class="stat-icon stat-blue"></div>
+                <div>
+                    <p class="stat-label">Open Applications</p>
+                    <p class="stat-value" id="statTotal">-</p>
+                </div>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon stat-purple"></div>
+                <div>
+                    <p class="stat-label">Interviews</p>
+                    <p class="stat-value" id="statInterviews">-</p>
+                </div>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon stat-green"></div>
+                <div>
+                    <p class="stat-label">Offers / Hires</p>
+                    <p class="stat-value" id="statHires">-</p>
+                </div>
+            </article>
+            <article class="stat-card">
+                <div class="stat-icon stat-orange"></div>
+                <div>
+                    <p class="stat-label">Avg. Match</p>
+                    <p class="stat-value" id="statAvgMatch">-</p>
+                </div>
+            </article>
+        </section>
+
+        <section class="card filter-card">
+            <div class="filters">
+                <div class="form-group">
+                    <label>Search</label>
+                    <input id="filterSearch" type="text" class="form-control" placeholder="Search by candidate or role" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" >Status</label>
+                    <select id="filterStatus" class="form-control">
+                        <option value="">All</option>
+                        <option value="pending">Pending</option>
+                        <option value="interview">Interview</option>
+                        <option value="interview_scheduled">Interview scheduled</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <input id="filterRole" type="text" class="form-control" placeholder="Job title" />
+                </div>
+            <div class="field actions">
+                <button class="btn btn-primary" id="applyFilters">Apply</button>
+                <button class="btn btn-secondary" id="clearFilters" >Clear</button>
+            </div>
+        </div>
+
+        </section>
+
+        <section class="applications-layout">
+            <article class="card applications-list">
+                <header class="panel-header">
+                    <div>
+                        <h3>Applications</h3>
+                        <p class="panel-subtitle" id="applicationsCount">Loading...</p>
+                    </div>
+                    <button class="btn btn-secondary" id="quickRefresh">Refresh</button>
+                </header>
+                <div id="applicationsContainer" class="applications-container">
+                    <p class="panel-placeholder">Loading applications...</p>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <script src="/js/pages/company/applications.js" defer></script>
+    <script src="/js/components/sidebar_animation.js?v=5"></script>
+
+</body>
+</html>

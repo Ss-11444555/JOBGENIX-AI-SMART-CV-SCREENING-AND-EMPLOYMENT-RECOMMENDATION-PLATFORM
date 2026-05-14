@@ -1,0 +1,213 @@
+<!-- components/navbar.html -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-container">
+            <a href="/" class="navbar-brand">
+                <i class="fas fa-robot navbar-brand-logo"></i>
+                <div class="navbar-brand-text">
+                    <span>JobMatch</span>
+                    <span class="navbar-badge">AI</span>
+                </div>
+            </a>
+            
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <div class="navbar-links" id="navbarLinks">
+                    <!-- Links will be populated based on user type -->
+                </div>
+                
+                <div class="navbar-actions" id="navbarAuth">
+                    <!-- Auth buttons will be populated -->
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    // Navbar functionality
+    class Navbar {
+        constructor() {
+            this.init();
+        }
+        
+        init() {
+            this.setupToggle();
+            this.loadUserData();
+            this.renderNavbar();
+        }
+        
+        setupToggle() {
+            const toggle = document.getElementById('navbarToggle');
+            const menu = document.getElementById('navbarMenu');
+            
+            if (toggle && menu) {
+                toggle.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!menu.contains(e.target) && !toggle.contains(e.target)) {
+                        menu.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        loadUserData() {
+            const userJson = localStorage.getItem('user');
+            if (userJson) {
+                try {
+                    this.user = JSON.parse(userJson);
+                    this.token = localStorage.getItem('token');
+                } catch (e) {
+                    console.error('Failed to parse user data:', e);
+                }
+            }
+        }
+        
+        renderNavbar() {
+            this.renderAuthSection();
+            this.renderNavigationLinks();
+        }
+        
+        renderAuthSection() {
+            const authSection = document.getElementById('navbarAuth');
+            if (!authSection) return;
+            
+            if (this.user && this.token) {
+                // User is logged in
+                const initials = this.getUserInitials();
+                const role = this.user.user_type?.replace('_', ' ') || 'User';
+                
+                authSection.innerHTML = `
+                    <div class="navbar-user">
+                        <div class="user-avatar">${initials}</div>
+                        <div class="user-info">
+                            <span class="user-name">${this.user.name || 'User'}</span>
+                            <span class="user-role">${role}</span>
+                        </div>
+                        <div class="user-dropdown">
+                            <a href="/pages/${this.user.user_type}/profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="/pages/${this.user.user_type}/settings.html" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item logout logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // User is not logged in
+                authSection.innerHTML = `
+                    <a href="/pages/auth/login.html" class="btn btn-outline btn-sm">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <div class="dropdown" style="display: inline-block;">
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fas fa-user-plus"></i> Register
+                        </button>
+                        <div class="dropdown-menu" style="min-width: 200px;">
+                            <a href="/pages/auth/register-jobseeker.html" class="dropdown-item">
+                                <i class="fas fa-user-tie"></i> As Job Seeker
+                            </a>
+                            <a href="/pages/auth/register-company.html" class="dropdown-item">
+                                <i class="fas fa-building"></i> As Company
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        renderNavigationLinks() {
+            const linksSection = document.getElementById('navbarLinks');
+            if (!linksSection) return;
+            
+            let links = [];
+            
+            if (this.user && this.token) {
+                // User-specific navigation
+                switch(this.user.user_type) {
+                    case 'job_seeker':
+                        links = [
+                            { href: '/pages/jobseeker/dashboard.html', icon: 'fas fa-home', text: 'Dashboard' },
+                            { href: '/pages/jobseeker/jobs/search.html', icon: 'fas fa-search', text: 'Find Jobs' },
+                            { href: '/pages/jobseeker/jobs/matches.html', icon: 'fas fa-heart', text: 'Matches', badge: 'AI' },
+                            { href: '/pages/jobseeker/applications.html', icon: 'fas fa-file-alt', text: 'Applications' },
+                            { href: '/pages/jobseeker/profile.html', icon: 'fas fa-user', text: 'Profile' }
+                        ];
+                        break;
+                    case 'company':
+                        links = [
+                            { href: '/pages/company/dashboard.html', icon: 'fas fa-home', text: 'Dashboard' },
+                            { href: '/pages/company/jobs/list.html', icon: 'fas fa-briefcase', text: 'Jobs' },
+                            { href: '/pages/company/candidates/list.html', icon: 'fas fa-users', text: 'Candidates' },
+                            { href: '/pages/company/analytics.html', icon: 'fas fa-chart-bar', text: 'Analytics' },
+                            { href: '/pages/company/settings/profile.html', icon: 'fas fa-building', text: 'Company' }
+                        ];
+                        break;
+                    case 'admin':
+                        links = [
+                            { href: '/pages/admin/dashboard.html', icon: 'fas fa-home', text: 'Dashboard' },
+                            { href: '/pages/admin/users.html', icon: 'fas fa-users', text: 'Users' },
+                            { href: '/pages/admin/companies.html', icon: 'fas fa-building', text: 'Companies' },
+                            { href: '/pages/admin/jobs.html', icon: 'fas fa-briefcase', text: 'Jobs' },
+                            { href: '/pages/admin/analytics.html', icon: 'fas fa-chart-bar', text: 'Analytics' }
+                        ];
+                        break;
+                }
+            } else {
+                // Public navigation
+                links = [
+                    { href: '/', icon: 'fas fa-home', text: 'Home' },
+                    { href: '#features', icon: 'fas fa-star', text: 'Features' },
+                    { href: '#how-it-works', icon: 'fas fa-play-circle', text: 'How It Works' },
+                    { href: '/pages/about.html', icon: 'fas fa-info-circle', text: 'About' }
+                ];
+            }
+            
+            // Add active class based on current page
+            const currentPath = window.location.pathname;
+            
+            linksSection.innerHTML = links.map(link => {
+                const isActive = currentPath === link.href || currentPath.startsWith(link.href + '/');
+                const badge = link.badge ? `<span class="navbar-badge">${link.badge}</span>` : '';
+                
+                return `
+                    <a href="${link.href}" class="navbar-link ${isActive ? 'active' : ''}">
+                        <i class="${link.icon}"></i>
+                        <span>${link.text}</span>
+                        ${badge}
+                    </a>
+                `;
+            }).join('');
+        }
+        
+        getUserInitials() {
+            if (!this.user || !this.user.name) return 'U';
+            return this.user.name
+                .split(' ')
+                .map(part => part[0])
+                .join('')
+                .toUpperCase()
+                .substring(0, 2);
+        }
+    }
+    
+    // Initialize navbar when component loads
+    document.addEventListener('DOMContentLoaded', () => {
+        window.Navbar = new Navbar();
+    });
+</script>

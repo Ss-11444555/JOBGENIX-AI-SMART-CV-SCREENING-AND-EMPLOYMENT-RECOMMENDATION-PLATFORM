@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications - JobMatch</title>
+    <link rel="stylesheet" href="/css/main-jobseeker.css">
+    <link rel="stylesheet" href="/css/pages/jobseeker/side_bar.css?v=2" />
+    <link rel="stylesheet" href="/css/pages/jobseeker/applications.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="jobseeker-layout pushed" id ="main-content">
+     <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-jobseeker open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Job Seeker</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/jobseeker/dashboard.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/jobseeker/analytics.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Application Analytics</span>
+            </a>
+            <a href="/pages/jobseeker/applications.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/jobseeker/jobs/search.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/jobsearch.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Job Search</span>
+            </a>
+            <a href="/pages/jobseeker/mock-interview.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/interview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Mock Interview</span>
+            </a>
+            <a href="/pages/jobseeker/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/jobseeker/profile.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/profile.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Profile</span>
+            </a>
+            <a href="/pages/jobseeker/settings.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="jobseekerLogoutBtn" class="btn btn-ghost">
+                <i class="fas fa-sign-out-alt"></i>Logout
+            </button>
+        </div>
+    </aside>
+
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <div class="header-row-container">
+                        <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                            <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                        </button>
+                    </div>
+                    <div class="header-text-group">
+                        <h1 class="page-title">Application</h1>
+                        <p class="page-subtitle">Here’s your job matching overview</p>
+                    </div>
+                </div>
+            <div class="js-avatar" id="userAvatar">JS</div>
+            </header>
+
+            <section class="card js-card">
+                <div class="dashboard-card">
+                <div class="card-header">
+                    <h3>My Applications</h3>
+                    <button class="btn btn-secondary" id="refreshBtn">Refresh</button>
+                </div>
+                <div class="table-wrap" id="applicationsContainer">
+                    <table class="js-table">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Company</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="applicationsBody">
+                            <tr><td colspan="4" class="empty-row">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+            </section>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/components/sidebar_animation_jobseeker.js?v=6"></script>
+    <script src="/js/pages/jobseeker/applications.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - JobMatch AI</title>
+    <link rel="stylesheet" href="/css/main-jobseeker.css">
+    <link rel="stylesheet" href="/css/pages/jobseeker/side_bar.css?v=2" />
+    <link rel="stylesheet" href="/css/pages/jobseeker/messages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="jobseeker-layout pushed " id ="main-content">
+     <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-jobseeker open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Job Seeker</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/jobseeker/dashboard.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/jobseeker/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Application Analytics</span>
+            </a>
+            <a href="/pages/jobseeker/applications.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/jobseeker/jobs/search.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/jobsearch.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Job Search</span>
+            </a>
+            <a href="/pages/jobseeker/mock-interview.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/interview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Mock Interview</span>
+            </a>
+            <a href="/pages/jobseeker/messages.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/jobseeker/profile.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/profile.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Profile</span>
+            </a>
+            <a href="/pages/jobseeker/settings.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="jobseekerLogoutBtn" class="btn btn-ghost">
+                <i class="fas fa-sign-out-alt"></i>Logout
+            </button>
+        </div>
+    </aside>
+
+<!-- TOP BAR -->
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+            <div class="header-text-group">
+                <p class="eyebrow">Inbox</p>
+                <h1 class="page-title">Messages</h1>
+                <p class="page-subtitle">Stay in touch with recruiters and keep track of conversations.</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input id="messageSearch" type="text" placeholder="Search conversations">
+                </div>
+                    <button class="btn btn-primary" id="newMessageBtn"><i class="fas fa-plus"></i> New Message</button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- <main class="main-content"> -->
+        <div id="navbar"></div>
+
+        <div class="container">
+
+            <div class="messages-shell">
+                <aside class="thread-list" id="threadList">
+                    <!-- Threads injected by JS -->
+                </aside>
+
+                <section class="chat-pane">
+                    <div class="chat-header">
+                        <div>
+                            <p class="eyebrow" id="chatCompany">Company</p>
+                            <h3 id="chatTitle">Select a conversation</h3>
+                            <p class="muted" id="chatMeta">Job title • Status</p>
+                        </div>
+                        <span class="status-badge" id="chatStatus">Active</span>
+                    </div>
+                    <div class="chat-body" id="chatBody">
+                        <p class="muted">Pick a thread to view messages.</p>
+                    </div>
+                    <div class="chat-input">
+                        <textarea id="messageInput" rows="2" placeholder="Write a message..."></textarea>
+                        <button class="btn btn-primary" id="sendBtn"><i class="fas fa-paper-plane"></i> Send</button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    <!-- </main> -->
+
+    <script src="/js/app.js"></script>
+    <script src="/js/components/sidebar_animation_jobseeker.js?v=6"></script>
+    <script src="/js/pages/jobseeker/messages.js?v=2"></script>
+    <script>
+        fetch('/components/sidebar.html')
+            .then(r => r.ok ? r.text() : '')
+            .then(html => { if (html) document.getElementById('sidebar').innerHTML = html; })
+            .catch(() => {});
+
+        fetch('/components/navbar.html')
+            .then(r => r.ok ? r.text() : '')
+            .then(html => { if (html) document.getElementById('navbar').innerHTML = html; })
+            .catch(() => {});
+    </script>
+</body>
+</html>

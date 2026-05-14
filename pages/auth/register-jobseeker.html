@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Job Seeker - JobMatch AI</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>JobMatch</span>
+                    <span class="auth-badge">AI</span>
+                </div>
+                <h1>Start Your Career Journey</h1>
+                <p>Create your job seeker account and find your dream job</p>
+            </div>
+            
+    <div class="auth-body">
+        <form id="registerJobseekerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="John Doe" required>
+                        <div class="form-error" id="fullNameError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please enter your full name</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                        <div class="form-error" id="emailError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please enter a valid email address</span>
+                        </div>
+                        <div class="code-row">
+                            <input type="text" id="verificationCode" class="form-control" placeholder="Verification code" style="flex:1;margin-top:8px;">
+                            <button type="button" id="sendCodeBtn" class="btn btn-outline btn-sm" style="margin-top:8px;">Send code</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-text">Must be at least 8 characters with letters and numbers</div>
+                        <div class="form-error" id="passwordError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Password must be at least 8 characters</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="confirmPassword" class="form-control" placeholder="••••••••" required>
+                            <button type="button" class="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error" id="confirmPasswordError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Passwords do not match</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="+1 (555) 123-4567">
+                    </div>
+                    
+        <div class="form-group">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" id="location" class="form-control" placeholder="City, Country">
+        </div>
+        
+        <div class="form-group">
+            <label for="experienceYears" class="form-label">Years of Experience</label>
+            <input type="number" id="experienceYears" name="experience_years" class="form-control" placeholder="e.g. 3.5" min="0" step="0.1">
+            <div class="form-text">Optional – used when the AI can’t infer experience from your CV.</div>
+        </div>
+                    
+                    <!-- CV upload removed per request -->
+                    
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. 
+                            I consent to receive job alerts and career tips from JobMatch AI.
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit">
+                        <i class="fas fa-user-plus"></i> Create Job Seeker Account
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>Already have an account?</span>
+                </div>
+                
+                <div class="text-center">
+                    <p>Sign in to your existing account</p>
+                    <a href="login.html" class="btn btn-outline btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Sign In Now
+                    </a>
+                </div>
+            </div>
+            
+            <div class="auth-footer">
+                <p>Looking to hire? <a href="register-company.html" class="auth-link">Register as a Company</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/app.js"></script>
+    <script>
+        // File upload handling
+        const sendCodeBtn = document.getElementById('sendCodeBtn');
+        
+        sendCodeBtn.addEventListener('click', async () => {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                alert('Enter your email first.');
+                return;
+            }
+            sendCodeBtn.disabled = true;
+            const original = sendCodeBtn.textContent;
+            sendCodeBtn.textContent = 'Sending...';
+            try {
+                const res = await fetch('http://localhost:8000/api/auth/send-code', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to send code');
+                alert(data.message || 'Code sent');
+            } catch (err) {
+                alert(err.message || 'Unable to send code');
+            } finally {
+                sendCodeBtn.disabled = false;
+                sendCodeBtn.textContent = original;
+            }
+        });
+        
+        // Form validation
+        const form = document.getElementById('registerJobseekerForm');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        
+        confirmPassword.addEventListener('input', () => {
+            if (password.value !== confirmPassword.value) {
+                document.getElementById('confirmPasswordError').style.display = 'flex';
+            } else {
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+        });
+        
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate form
+            let isValid = true;
+            
+            if (!document.getElementById('fullName').value) {
+                document.getElementById('fullNameError').style.display = 'flex';
+                isValid = false;
+            } else {
+                document.getElementById('fullNameError').style.display = 'none';
+            }
+            
+            if (!document.getElementById('email').value) {
+                document.getElementById('emailError').style.display = 'flex';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+            if (!document.getElementById('verificationCode').value) {
+                alert('Please enter the verification code sent to your email.');
+                isValid = false;
+            }
+            
+            if (password.value.length < 8) {
+                document.getElementById('passwordError').style.display = 'flex';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+            
+            if (password.value !== confirmPassword.value) {
+                document.getElementById('confirmPasswordError').style.display = 'flex';
+                isValid = false;
+            } else {
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+            
+            if (!isValid) return;
+            
+            // Submit form
+            const submitBtn = form.querySelector('.auth-submit');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Prepare form data
+                const formData = new FormData();
+                formData.append('fullName', document.getElementById('fullName').value);
+                formData.append('email', document.getElementById('email').value);
+                formData.append('verification_code', document.getElementById('verificationCode').value);
+                formData.append('password', password.value);
+                formData.append('phone', document.getElementById('phone').value);
+                formData.append('location', document.getElementById('location').value);
+                formData.append('user_type', 'job_seeker');
+                // optional fields expected by backend
+                formData.append('currentTitle', '');
+                formData.append('experienceLevel', '');
+                const experienceValue = document.getElementById('experienceYears')?.value;
+                if (experienceValue) {
+                    formData.append('experience_years', experienceValue);
+                }
+                
+                // Send registration request
+                const url = 'http://localhost:8000/api/auth/job-seeker/register';
+                console.log('Submitting registration to', url);
+                const response = await fetch(url, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                let data;
+                try {
+                    data = await response.json();
+                } catch (jsonErr) {
+                    console.error('Failed to parse JSON response', jsonErr);
+                    throw new Error(`Invalid JSON response (status ${response.status})`);
+                }
+                
+                console.log('Registration response', response.status, data);
+
+                if (response.ok) {
+                    window.JobGenixApp.showAlert('Account created successfully!', 'success');
+                    
+                    // Redirect to login after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    window.JobGenixApp.showAlert(data.error || data.message || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                window.JobGenixApp.showAlert('Network error. Please try again.', 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Password toggle
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

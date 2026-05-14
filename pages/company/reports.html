@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <title>Reports - JobGenix AI</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css?v=2" />
+    <style>
+        .report-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .report-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 16px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+        }
+        .report-card h3 { margin: 0 0 6px; }
+        .report-card p { margin: 0; color: #475569; }
+        .chart-placeholder {
+            border: 1px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: #6b7280;
+            background: #f8fafc;
+        }
+    </style>
+</head>
+<body class="company-layout pushed" id="main-content">
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/reports.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Reports</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">Logout</button>
+        </div>
+    </aside>
+
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+            <div class="header-text-group">
+                <h1 class="page-title">Reports</h1>
+                <p class="page-subtitle">Snapshot of your hiring performance.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <section class="report-grid">
+            <div class="report-card">
+                <h3>Applications by Status</h3>
+                <p id="reportByStatus">Loading...</p>
+            </div>
+            <div class="report-card">
+                <h3>Interviews Scheduled</h3>
+                <p id="reportInterviews">Loading...</p>
+            </div>
+            <div class="report-card">
+                <h3>Hires This Month</h3>
+                <p id="reportHires">Loading...</p>
+            </div>
+        </section>
+        <section class="report-card">
+            <h3>Activity Trend</h3>
+            <div class="chart-placeholder">Chart placeholder</div>
+        </section>
+    </main>
+
+    <script src="/js/components/sidebar_animation.js?v=5"></script>
+    <script src="/js/pages/company/reports.js" defer></script>
+</body>
+</html>

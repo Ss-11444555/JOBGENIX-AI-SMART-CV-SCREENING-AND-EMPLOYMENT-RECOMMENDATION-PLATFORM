@@ -1,0 +1,44 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+venv311/
+.venv/
+env/
+ENV/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Uploads, generated files, and temporary files
+uploads/
+temp/
+*.log
+*.tmp
+resume_extracted_text.txt
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local OCR / training environments
+OCR_code/heading-training/
+New folder/OCR_code/heading-training/
+VirtualMeeting/ai/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large model files
+*.pt
+*.pth
+*.onnx
+*.pkl
+*.joblib

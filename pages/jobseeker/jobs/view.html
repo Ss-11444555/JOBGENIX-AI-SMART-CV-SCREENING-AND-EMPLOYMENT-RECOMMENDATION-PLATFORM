@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Job Details</title>
+    <link rel="stylesheet" href="/css/base/reset.css" />
+    <link rel="stylesheet" href="/css/base/variables.css" />
+    <link rel="stylesheet" href="/css/base/typography.css" />
+    <link rel="stylesheet" href="/css/components/cards.css" />
+    <link rel="stylesheet" href="/css/components/buttons.css" />
+    <style>
+        body { background:#f8fafc; color:#0f172a; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+        .shell { max-width: 900px; margin: 40px auto; padding: 0 18px; }
+        .card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 10px 35px rgba(15,23,42,0.08); }
+        .meta { display:flex; flex-wrap:wrap; gap:10px; margin: 10px 0 14px; }
+        .pill { background:#eef2ff; color:#4338ca; padding:6px 10px; border-radius:999px; font-weight:600; font-size:12px; }
+        .section { margin-top:14px; }
+        .chips { display:flex; flex-wrap:wrap; gap:6px; }
+        .chips span { background:#f8fafc; border:1px solid #e2e8f0; padding:6px 8px; border-radius:8px; font-size:12px; }
+        .muted { color:#475569; }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <div class="card">
+            <button onclick="window.close()" class="btn btn-secondary" style="float:right;">Close</button>
+            <h2 id="jobTitle">Loading...</h2>
+            <div id="jobMeta" class="meta"></div>
+            <div id="jobSalary" class="section"></div>
+            <div id="jobDescription" class="section"></div>
+            <div id="jobRequired" class="section"></div>
+            <div id="jobBonus" class="section"></div>
+            <div id="jobBenefits" class="section"></div>
+            <div id="jobDeadline" class="section"></div>
+            <div id="jobCompany" class="section"></div>
+            <div id="errorBox" class="section muted"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const API_BASE = (window.JobGenixApp && window.JobGenixApp.apiBase) || "http://localhost:8000/api";
+            const token = localStorage.getItem("authToken") || localStorage.getItem("token") || localStorage.getItem("jobgenix_token");
+
+            const params = new URLSearchParams(window.location.search);
+            const jobId = params.get("id");
+            if (!jobId) {
+                document.getElementById("errorBox").textContent = "Missing job id.";
+                return;
+            }
+
+            fetchJob(jobId);
+
+            async function fetchJob(id) {
+                try {
+                    const res = await fetch(`${API_BASE}/jobs/${id}`, {
+                        headers: token ? { "Authorization": "Bearer " + token } : {}
+                    });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok || !data.job) {
+                        document.getElementById("errorBox").textContent = data.error || "Unable to load job.";
+                        return;
+                    }
+                    render(data.job);
+                } catch (e) {
+                    document.getElementById("errorBox").textContent = "Network error loading job.";
+                }
+            }
+
+            function render(job) {
+                const titleEl = document.getElementById("jobTitle");
+                const metaEl = document.getElementById("jobMeta");
+                const salaryEl = document.getElementById("jobSalary");
+                const descEl = document.getElementById("jobDescription");
+                const reqEl = document.getElementById("jobRequired");
+                const bonusEl = document.getElementById("jobBonus");
+                const benEl = document.getElementById("jobBenefits");
+                const deadlineEl = document.getElementById("jobDeadline");
+                const companyEl = document.getElementById("jobCompany");
+
+                titleEl.textContent = job.title || "Job details";
+
+                const companyName = job.company_name || job.company || "Company";
+                const location = job.location || "Location not specified";
+                const typeText = job.job_type || job.type || "Type not specified";
+                const expText = job.experience_level || job.experience || "Experience not specified";
+
+                metaEl.innerHTML = `
+                    <span class="pill">${companyName}</span>
+                    <span class="pill">${location}</span>
+                    <span class="pill">${typeText}</span>
+                    <span class="pill">${expText}</span>
+                `;
+
+                const salaryText = (job.salary_min != null && job.salary_max != null)
+                    ? \`\${job.salary_min} - \${job.salary_max} \${job.salary_type || ""}\`.trim()
+                    : "Not specified";
+                salaryEl.innerHTML = "<strong>Salary:</strong> " + salaryText;
+
+                const desc = job.description || job.requirements || "No description provided.";
+                descEl.innerHTML = "<strong>Description:</strong> <div class='muted'>" + desc + "</div>";
+
+                const required = normalizeList(job.required_skills);
+                if (required.length) {
+                    reqEl.innerHTML = "<strong>Required skills:</strong> <div class='chips'>" + required.map(s => \`<span>\${s}</span>\`).join("") + "</div>";
+                }
+                const bonus = normalizeList(job.bonus_skills);
+                if (bonus.length) {
+                    bonusEl.innerHTML = "<strong>Bonus skills:</strong> <div class='chips'>" + bonus.map(s => \`<span>\${s}</span>\`).join("") + "</div>";
+                }
+                const benefits = normalizeList(job.benefits);
+                if (benefits.length) {
+                    benEl.innerHTML = "<strong>Benefits:</strong> <div class='chips'>" + benefits.map(s => \`<span>\${s}</span>\`).join("") + "</div>";
+                }
+                if (job.application_deadline) {
+                    deadlineEl.innerHTML = "<strong>Application deadline:</strong> " + job.application_deadline;
+                }
+                if (job.company_description || job.company_website || job.company_industry) {
+                    const parts = [];
+                    if (job.company_description) parts.push(job.company_description);
+                    if (job.company_industry) parts.push("Industry: " + job.company_industry);
+                    if (job.company_website) parts.push("Website: " + job.company_website);
+                    companyEl.innerHTML = "<strong>Company:</strong> <div class='muted'>" + parts.join("<br>") + "</div>";
+                }
+            }
+
+            function normalizeList(val) {
+                if (!val) return [];
+                if (Array.isArray(val)) return val;
+                if (typeof val === "string") {
+                    try {
+                        const parsed = JSON.parse(val);
+                        return Array.isArray(parsed) ? parsed : val.split(",").map(s => s.trim()).filter(Boolean);
+                    } catch (_) {
+                        return val.split(",").map(s => s.trim()).filter(Boolean);
+                    }
+                }
+                return [];
+            }
+        })();
+    </script>
+</body>
+</html>

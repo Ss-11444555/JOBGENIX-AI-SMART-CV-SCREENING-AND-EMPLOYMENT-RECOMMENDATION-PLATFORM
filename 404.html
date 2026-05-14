@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - JobGenix AI</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-50) 0%, var(--gray-50) 100%);
+            padding: var(--space-6);
+        }
+        
+        .error-content {
+            text-align: center;
+            max-width: 500px;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            color: var(--primary-600);
+            line-height: 1;
+            margin-bottom: var(--space-4);
+        }
+        
+        .error-title {
+            font-size: var(--font-3xl);
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--space-4);
+        }
+        
+        .error-message {
+            font-size: var(--font-lg);
+            color: var(--gray-600);
+            margin-bottom: var(--space-8);
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-content">
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">
+                The page you are looking for might have been removed, 
+                had its name changed, or is temporarily unavailable.
+            </p>
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home"></i>
+                    Go to Homepage
+                </a>
+                <button onclick="history.back()" class="btn btn-outline btn-lg">
+                    <i class="fas fa-arrow-left"></i>
+                    Go Back
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

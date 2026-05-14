@@ -1,0 +1,69 @@
+<!-- Overview partial: metrics + active jobs + recent candidates -->
+
+<section class="company-overview">
+  <!-- Top metrics -->
+  <div class="metrics-row">
+    <div class="metric-card">
+      <div class="metric-icon metric-icon-bag">
+        <i class="fa-solid fa-briefcase"></i>
+      </div>
+      <div class="metric-content">
+        <div class="metric-label">Active Jobs</div>
+        <div id="metricActiveJobs" class="metric-value">0</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon metric-icon-mail">
+        <i class="fa-solid fa-envelope-open-text"></i>
+      </div>
+      <div class="metric-content">
+        <div class="metric-label">New Applications</div>
+        <div id="metricNewApplications" class="metric-value">0</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon metric-icon-people">
+        <i class="fa-solid fa-user-group"></i>
+      </div>
+      <div class="metric-content">
+        <div class="metric-label">Interviews</div>
+        <div id="metricInterviews" class="metric-value">0</div>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="metric-icon metric-icon-check">
+        <i class="fa-solid fa-user-check"></i>
+      </div>
+      <div class="metric-content">
+        <div class="metric-label">New Hires</div>
+        <div id="metricNewHires" class="metric-value">0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main row: Active jobs + Recent candidates -->
+  <div class="two-column-row">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Active Job Postings</h2>
+        <button class="link-button" data-view="my-jobs">View All</button>
+      </div>
+      <div id="overviewActiveJobs" class="card-body">
+        <p class="muted-text">No active job postings yet.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Recent Candidates</h2>
+        <button class="link-button" data-view="candidates">View All</button>
+      </div>
+      <div id="overviewRecentCandidates" class="card-body">
+        <p class="muted-text">Loading candidates…</p>
+      </div>
+    </div>
+  </div>
+</section>

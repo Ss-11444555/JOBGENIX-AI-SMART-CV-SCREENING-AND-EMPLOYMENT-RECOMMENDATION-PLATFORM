@@ -1,0 +1,205 @@
+## H2 Section Start ##
+Bounding Box (Original): (69, 362, 931, 2006), Bounding Box (Adjusted): (69, 362, 901, 2006)
+--------------------------------
+Low Jack Han
+Computer Science (Al) Student
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (362, 505, 928, 2456), Bounding Box (Adjusted): (362, 505, 898, 2456)
+--------------------------------
+Experience
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (505, 888, 938, 2441), Bounding Box (Adjusted): (505, 888, 908, 2441)
+--------------------------------
+Internship — Sophic Automation Sdn. Bhd (Simpang Ampat, Penang)
+
+Oct 2022 —- Mar 2023 - Software Innovation Department
+
+e Assisted in developing a Building Management System (BMS) using C# and WPF.
+
+e Designed UI screens, configured door access systems (MagEtegra), and supported
+fingerprint device setup.
+
+e Documented workflows and collaborated with supervisors, vendors, and team
+members to resolve technical issues.
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (710, 855, 63, 795), Bounding Box (Adjusted): (710, 855, 33, 795)
+--------------------------------
+Contact
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (855, 1465, 64, 786), Bounding Box (Adjusted): (855, 1465, 34, 786)
+--------------------------------
+Phone
+
+011-5'7533688
+
+Email
+
+lowjackhan23@gmail.com
+LinkedIn
+www.linkedin.com/in/jackhanlow
+https://lowjackhan23.wixsite.com/
+portfolio
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (888, 1231, 930, 2412), Bounding Box (Adjusted): (888, 1231, 900, 2412)
+--------------------------------
+Service Crew / Cashier — Dong Tai Kopitiam (Ipoh, Perak)
+
+Mar 2023 — Oct 2023 (Full-time) » Part-time during semester breaks
+
+e Handled customer service, order taking, and cashier operations in a fast-paced
+dining environment.
+
+e Prepared toast, beverages, and assisted with front-of-house operations and daily
+closing tasks.
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (1231, 1963, 928, 2456), Bounding Box (Adjusted): (1231, 1963, 898, 2456)
+--------------------------------
+Education
+
+2023 - Present Bachelor of Computer Science
+Universiti Teknikal (Artificial Intelligence)
+
+Malaysia Melaka (UTeM) Current CGPA - 3.45
+
+2020 - 2023 Diploma of Information Technology
+Politeknik Balik Pulau (Digital Technology)
+
+(PBU) CGPA - 3.92
+
+2015 - 2019 SPM - Science Stream
+
+SMIK Yuk Choy TA+ 3A- 2B+ 2B-1C+ 1C
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (1465, 1653, 63, 796), Bounding Box (Adjusted): (1465, 1653, 33, 796)
+--------------------------------
+IT Skills
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (1653, 2306, 62, 689), Bounding Box (Adjusted): (1653, 2306, 32, 689)
+--------------------------------
+Programming
+
+Python, Java, C#, CSS, HTML,
+PHP, Javascript
+
+Software Tools
+
+Android Studio, MATLAB, R,
+Microsoft, Oracle
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (1963, 2104, 928, 2456), Bounding Box (Adjusted): (1963, 2104, 898, 2456)
+--------------------------------
+Project
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (2104, 2363, 928, 2383), Bounding Box (Adjusted): (2104, 2363, 898, 2383)
+--------------------------------
+Al-Based Computer Vision for CCTV Analysis (Degree FYP)
+e Developed a real-time CCTV anomaly detection system using YOLO/CNN for object
+and behaviour recognition.
+e Implemented automated alerts and evaluated model performance across different
+surveillance scenarios.
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (2306, 3020, 63, 799), Bounding Box (Adjusted): (2306, 3020, 33, 799)
+--------------------------------
+Soft Skills
+e Teamwork & Collaboration
+e Communication
+e Time Management
+e Fast Learner
+e Customer Service
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (2363, 2623, 932, 2421), Bounding Box (Adjusted): (2363, 2623, 902, 2421)
+--------------------------------
+ITN E-Book with Augmented Reality (AR) (Diploma FYP)
+
+e Built an AR learning app using Unity + Vuforia to display interactive 3D networking
+devices.
+
+e Integrated AR scanning and animations to help students visualize ITN concepts more
+effectively.
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (2623, 2899, 930, 2433), Bounding Box (Adjusted): (2623, 2899, 900, 2433)
+--------------------------------
+Salary Prediction Dashboard for Fresh Graduates (Capstone)
+e Built asalary prediction model using CatBoost trained on 69,000+ JobStreet listings to
+estimate entry-level salary ranges.
+e Developed an interactive dashboard with Flask AP! + Dash/Plotly for real-time salary
+insights by job role, category, type, and location.
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (2899, 3193, 928, 2456), Bounding Box (Adjusted): (2899, 3193, 898, 2456)
+--------------------------------
+e e e
+Certifications
+e Oracle Certified Foundations Associate
+e ASEAN Data Science Explorers 2025 competition
+e FINAL YEAR PROJECT COMPETITION (FiyProC)
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (3020, 3441, 63, 799), Bounding Box (Adjusted): (3020, 3441, 33, 799)
+--------------------------------
+Language
+Mandarin
+English
+
+Bahasa Malaysia
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (3193, 3332, 928, 2456), Bounding Box (Adjusted): (3193, 3332, 898, 2456)
+--------------------------------
+Reference
+--------------------------------
+## H2 Section End ##
+
+## H2 Section Start ##
+Bounding Box (Original): (3332, 3442, 930, 2026), Bounding Box (Adjusted): (3332, 3442, 900, 2026)
+--------------------------------
+PROFESOR MADYA TS. DR. CHOO YUN HUOY
+Phone: 06-3316606 Email: huoy@utem.edu.my
+--------------------------------
+## H2 Section End ##
+

@@ -1,0 +1,139 @@
+.analytics-body {
+    background: #f5f7fb;
+}
+.analytics-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px 18px 28px;
+}
+.no-sidebar .main-content {
+    padding-left: 0;
+}
+.hero {
+    margin-bottom: 14px;
+    padding: 20px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #022b8c, #004cfc);
+    color: #e2e8f0;
+    box-shadow: 0 20px 45px rgba(15,23,42,0.25);
+    /* display: grid; */
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+    align-items: center;
+}
+.hero h1 { margin: 6px 0 6px 0; font-size: 28px; }
+.hero .muted { color: rgba(226,232,240,0.8); margin: 0; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 12px; margin: 0; color: rgba(226,232,240,0.7); }
+.hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 10px;
+}
+.hero-meta .metric {
+    background: rgba(255, 255, 255, 0.215);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 10px 12px;
+    text-align: center;
+}
+.hero-meta strong { font-size: 22px; color: #fff; }
+.hero-meta .label { color: rgba(255, 255, 255, 0.7); margin: 0 0 2px 0; }
+
+.grid {
+    display: grid;
+    /* grid-template-columns: 2fr 1fr; */
+    gap: 14px;
+}
+.card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    box-shadow: 0 12px 30px rgba(15,23,42,0.06);
+}
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #94a3b8; margin: 0; }
+.card h3 { margin: 2px 0 0 0; }
+
+.trend-bars {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(0,1fr));
+    gap: 8px;
+    align-items: end;
+    min-height: 140px;
+    padding: 4px 2px;
+}
+.trend-bar {
+    background: linear-gradient(180deg, #2563eb, #1d4ed8);
+    border-radius: 8px 8px 6px 6px;
+    min-height: 8px;
+    box-shadow: 0 6px 18px rgba(37,99,235,0.25);
+}
+.trend-bar.empty { background: #e5e7eb; box-shadow: none; }
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.list-item {
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #f8fafc;
+}
+.list-item strong { display: block; margin-bottom: 4px; color: #111827; }
+.list-item .sub { color: #475569; font-size: 13px; margin: 0; }
+.list-item .meta { color: #94a3b8; font-size: 12px; margin: 0; }
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+.pill-soft { background: #eff6ff; color: #1d4ed8; border-color: #dbeafe; }
+
+.span-2 { grid-column: span 2; }
+
+@media (max-width: 1024px) {
+    .analytics-container { padding: 12px; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-meta { grid-template-columns: repeat(2, minmax(0,1fr)); width: 100%; }
+    .span-2 { grid-column: span 1; }
+}
+.list {
+    /* 1. Set a fixed maximum height */
+    max-height: 300px; 
+    
+    /* 2. Enable vertical scrolling */
+    overflow-y: auto;
+    
+    /* 3. Optional: Add some padding so content doesn't touch the scrollbar */
+    padding-right: 10px;
+}
+
+/* Optional: Make the scrollbar look modern and thin */
+.list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.list::-webkit-scrollbar-thumb {
+    background: #cbd5e1; /* Light gray */
+    border-radius: 10px;
+}
+
+.list::-webkit-scrollbar-track {
+    background: transparent;
+}

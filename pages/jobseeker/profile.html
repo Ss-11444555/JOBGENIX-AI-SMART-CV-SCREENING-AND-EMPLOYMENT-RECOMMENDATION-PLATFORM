@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - JobGenix AI</title>
+
+    <link rel="stylesheet" href="/css/main-jobseeker.css">
+    <link rel="stylesheet" href="/css/pages/jobseeker/side_bar.css?v=2" />
+    <link rel="stylesheet" href="/css/pages/jobseeker/profile.css?v=3" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        .input-with-caption {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .input-with-caption .form-caption {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="jobseeker-layout pushed " id = "main-content">
+
+ <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-jobseeker open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Job Seeker</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/jobseeker/dashboard.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/jobseeker/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Application Analytics</span>
+            </a>
+            <a href="/pages/jobseeker/applications.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/jobseeker/jobs/search.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/jobsearch.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Job Search</span>
+            </a>
+            <a href="/pages/jobseeker/mock-interview.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/interview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Mock Interview</span>
+            </a>
+            <a href="/pages/jobseeker/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/jobseeker/profile.html" class="nav-item  active">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/profile.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Profile</span>
+            </a>
+            <a href="/pages/jobseeker/settings.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="jobseekerLogoutBtn" class="btn btn-ghost">
+                <i class="fas fa-sign-out-alt"></i>Logout
+            </button>
+        </div>
+    </aside>
+    
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <!-- <div class="user-welcome"> -->
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+            <div class="header-text-group">
+                <h1 class =" page-title" >My Profile</h1>
+                <p class="page-subtitle" >Manage your personal information so we can match you with the best jobs.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <!-- <main class="main-content"> -->
+        <!-- <div id="navbar"></div> -->
+
+        <div class="container">
+            <div class="highlight-grid">
+                <div class="highlight-card">
+                    <p class="eyebrow">Match Score</p>
+                    <div class="highlight-value" id="matchScoreHighlight">—</div>
+                    <p class="muted">AI fit for your target roles</p>
+                </div>
+                <div class="highlight-card">
+                    <p class="eyebrow">Predicted Role</p>
+                    <div class="highlight-value" id="roleHighlight">—</div>
+                    <p class="muted">Best match based on your CV</p>
+                </div>
+                <div class="highlight-card">
+                    <p class="eyebrow">Salary Estimate</p>
+                    <div class="highlight-value" id="salaryHighlight">—</div>
+                    <p class="muted">Expected range</p>
+                </div>
+                <div class="highlight-card">
+                    <p class="eyebrow">Experience</p>
+                    <div class="highlight-value" id="experienceHighlight">—</div>
+                    <p class="muted">Years in your domain</p>
+                </div>
+            </div>
+
+            <div class="profile-grid">
+
+                <!-- Profile Summary + Skills -->
+                <div class="profile-left">
+                    <div class="card profile-card">
+                        <div class="profile-header">
+                            <div class="avatar">
+                                <img id="profileAvatar" src="/assets/default-avatar.png" alt="Profile avatar" />
+                                <div class="avatar-upload">
+                                    <input type="file" id="avatarInput" accept=".png,.jpg,.jpeg" />
+                                    <button type="button" id="avatarUploadBtn" class="btn btn-secondary btn-sm">Change</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class ="subtitle" id="profileName">Loading...</p>
+                                <p class="subtitle" id="profileTitle"></p>
+                                <p class="meta">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="profileLocation"></span>
+                                </p>
+                                <p class="bio-line" id="profileBio"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+
+                        <!-- <h3>Skills</h3> -->
+
+                        <div class="cv-analysis">
+                        <h3>AI Analysis</h3>
+
+                        <div class="analysis-grid">
+
+                            <p><strong>Predicted Role:</strong> <span id="aiRole"></span></p>
+                            <p><strong>Salary:</strong> <span id="aiSalary"></span></p>
+                        <p><strong>Experience:</strong> <span id="aiExperience"></span></p>
+                            <p><strong>Match Score:</strong> <span id="matchScore"></span></p>
+
+                        </div>
+
+                        <p><strong>Detected Skills:</strong></p>
+                        <ul id="aiSkills"></ul>
+                        <p id="aiSkillsMessage" class="analysis-warning" style="display:none;"></p>
+
+                        <div class="analysis-extra">
+                            <p><strong>Top Predictions:</strong> <span id="topJobRoles">—</span></p>
+                            <p><strong>Education:</strong> <span id="educationSummary">—</span></p>
+                        </div>
+
+                    </div>
+
+                        <div id="skillsList" class="skills-box"></div>
+
+                        <div class="skill-input">
+                            <input id="newSkill" class="form-control" placeholder="Add a skill" />
+                            <button id="addSkillBtn" class="btn btn-secondary">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAIN CONTENT -->
+                <div class="profile-right">
+
+                <!-- PERSONAL INFO -->
+                <div class="card">
+                    <h3>Personal Information</h3>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input id="fullName" class="form-control" placeholder="Full name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Current Title</label>
+                            <input id="currentTitle" class="form-control" placeholder="e.g., Backend Engineer" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Location</label>
+                            <input id="location" class="form-control" placeholder="City, Country" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input id="phone" class="form-control" placeholder="Phone number" />
+                        </div>
+
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label">Bio</label>
+                            <textarea id="bio" class="form-control" placeholder="Brief description for your profile."></textarea>
+                        </div>
+
+                        <div class="form-group" style="grid-column: span 2;">
+                            <label class="form-label" for="manualExperienceInput">Manual Experience (years)</label>
+                            <div class="input-with-caption">
+                                <input type="number" id="manualExperienceInput" class="form-control" min="0" step="0.1" placeholder="e.g. 4.0" />
+                                <span class="form-caption">Used as a fallback when the OCR cannot detect your experience.</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button id="saveProfileBtn" class="btn btn-primary displayright">Save Changes</button>
+
+                </div>
+
+                <!-- CV UPLOAD -->
+                <div class="card">
+                    <h3>Resume (CV)</h3>
+                    <p class="subtitle">Try our AI resume analysis feature by uploading the resume now.</p>
+                    <div class="cv-upload-box">
+                        <input type="file" id="cvUpload" class="form-control" accept=".pdf,.png" />
+                        <p id="cvFileName" class="cv-name">No resume uploaded yet</p>
+                        <button id="uploadCvBtn" class="btn btn-primary displayright">Upload CV</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <!-- </main> -->
+
+    <script src="/js/app.js"></script>
+    <script src="/js/components/sidebar_animation_jobseeker.js?v=6"></script>
+    <script src="/js/pages/jobseeker/profile.js?v=4"></script>
+    <script>
+        fetch('/components/sidebar.html')
+            .then(r => r.ok ? r.text() : '')
+            .then(html => { if (html) document.getElementById('sidebar').innerHTML = html; })
+            .catch(() => {});
+
+        fetch('/components/navbar.html')
+            .then(r => r.ok ? r.text() : '')
+            .then(html => { if (html) document.getElementById('navbar').innerHTML = html; })
+            .catch(() => {});
+    </script>
+
+</body>
+</html>

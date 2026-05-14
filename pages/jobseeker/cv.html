@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit CV - JobGenix AI</title>
+    <!-- Page specific -->
+    <link rel="stylesheet" href="/css/main-jobseeker.css">
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css" />
+    <link rel="stylesheet" href="/css/pages/jobseeker/cv.css" />
+</head>
+<body class="jobseeker-layout pushed" id="main-content">
+<!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Job Seeker</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/jobseeker/dashboard.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/home.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/jobseeker/cv.html" class="nav-item active" >
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Resume Analysis</span>
+            </a>
+            <a href="/pages/jobseeker/applications.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/jobseeker/jobs/search.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/jobsearch.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Job Search</span>
+            </a>
+            </a>
+            <a href="/pages/jobseeker/mock-interview.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/interview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Mock Interview</span>
+            </a>
+            <a href="/pages/jobseeker/profile.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/profile.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Profile</span>
+            <a href="/pages/jobseeker/settings.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+                </div>
+                    <div class="header-text-group">
+                        <h1 class="page-title">Edit CV</h1>
+                        <p class="page-subtitle">Upload a new CV and let JobGenix AI analyze it to improve your job matches.</p>
+                    </div>
+                </div>
+    </div>
+        
+    <!-- MAIN CONTENT -->
+    <main class="content-section">
+        <div class="cv-layout">
+
+            <!-- LEFT: Upload + current CV info -->
+            <section class="card cv-upload-card">
+                <h2>Upload Resume</h2>
+                <p class="description">
+                    Supported formats: PDF, DOC, DOCX (max 5MB).
+                </p>
+
+                <div class="current-file">
+                    <span class="label">Current CV:</span>
+                    <span id="cvFileName" class="value">No resume uploaded yet</span>
+                    <a id="cvDownloadLink" href="#" target="_blank" class="link" style="display:none;">
+                        View CV
+                    </a>
+                </div>
+
+                <div class="upload-zone">
+                    <input type="file" id="cvFileInput" accept=".pdf,.doc,.docx" />
+                    <button id="uploadCvBtn" class="btn btn-primary">Upload & Analyze</button>
+                </div>
+
+                <p id="uploadStatus" class="status-text"></p>
+            </section>
+
+            <!-- RIGHT: AI analysis -->
+            <section class="card cv-analysis-card">
+                <h2>AI Analysis</h2>
+
+                <div class="analysis-grid">
+                    <div class="metric">
+                        <span class="label">Predicted Job Role</span>
+                        <span id="aiRole" class="value">—</span>
+                    </div>
+
+                    <div class="metric">
+                        <span class="label">Predicted Salary</span>
+                        <span id="aiSalary" class="value">—</span>
+                    </div>
+
+                    <div class="metric">
+                        <span class="label">Experience (Years)</span>
+                        <span id="aiExperience" class="value">—</span>
+                    </div>
+
+                    <div class="metric">
+                        <span class="label">Match Score</span>
+                        <span id="matchScore" class="value">0</span>
+                    </div>
+                </div>
+
+                <div class="skills-section">
+                    <h3>Detected Skills</h3>
+                    <ul id="aiSkills" class="skills-list"></ul>
+                </div>
+
+                <div class="hint-box">
+                    <h4>Tip</h4>
+                    <p>
+                        Keep your CV updated with your latest projects and technologies.
+                        A stronger CV helps the AI suggest better job matches.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/components/sidebar_animation.js"></script>
+    <script src="/js/pages/jobseeker/cv.js"></script>
+    
+</body>
+</html>

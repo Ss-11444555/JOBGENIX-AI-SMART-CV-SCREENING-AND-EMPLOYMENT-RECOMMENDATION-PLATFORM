@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - JobSeeker</title>
+    <link rel="stylesheet" href="/css/main-jobseeker.css">
+    <link rel="stylesheet" href="/css/pages/jobseeker/side_bar.css?v=2" />
+    <link rel="stylesheet" href="/css/pages/jobseeker/settings.css?v=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="jobseeker-layout pushed" id = "main-content">
+     <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-jobseeker open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Job Seeker</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/jobseeker/dashboard.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/jobseeker/analytics.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Application Analytics</span>
+            </a>
+            <a href="/pages/jobseeker/applications.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/jobseeker/jobs/search.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/jobsearch.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Job Search</span>
+            </a>
+            <a href="/pages/jobseeker/mock-interview.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/interview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Mock Interview</span>
+            </a>
+            <a href="/pages/jobseeker/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/jobseeker/profile.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/profile.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Profile</span>
+            </a>
+            <a href="/pages/jobseeker/settings.html" class="nav-item active">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="jobseekerLogoutBtn" class="btn btn-ghost">
+                <i class="fas fa-sign-out-alt"></i>Logout
+            </button>
+        </div>
+    </aside>
+
+  <!-- TOP BAR -->
+    <!-- <div class="dashboard-header"> -->
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <!-- <div class="user-welcome"> -->
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+            <div class="header-text-group">
+                <h1 class="page-title" >Settings</h1>
+                <p class="page-subtitle">Manage your account information.</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- <div id="navbar"></div> -->
+
+        <div class="settings-shell">
+            <aside class="settings-nav">
+                <div class="brand">Settings</div>
+                <ul>
+                    <li class="active"><span class="dot"></span>Personal Information</li>
+                </ul>
+            </aside>
+
+            <section class="settings-card">
+                <div class="settings-header">
+                    <div>
+                        <p class="eyebrow">Profile</p>
+                        <h2>Personal information</h2>
+                        <p class="muted small">This information will be displayed to employers. Be mindful of what you share.</p>
+                    </div>
+                    <div class="actions">
+                        <button id="cancelBtn" class="btn ghost">Cancel</button>
+                        <button id="saveBtn" class="btn primary">Save</button>
+                    </div>
+                </div>
+
+                <form id="settingsForm" class="form-grid">
+                    <div class="field">
+                        <label for="firstName">First name</label>
+                        <input id="firstName" type="text" placeholder="First name" autocomplete="given-name" />
+                    </div>
+                    <div class="field">
+                        <label for="lastName">Last name</label>
+                        <input id="lastName" type="text" placeholder="Last name" autocomplete="family-name" />
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="Email" autocomplete="email" disabled />
+                        <small class="muted">Email is managed in your account login.</small>
+                    </div>
+                    <div class="field">
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="tel" placeholder="Phone number" autocomplete="tel" />
+                    </div>
+                    <div class="field full">
+                        <label for="headline">Headline</label>
+                        <input id="headline" type="text" placeholder="e.g., Backend Engineer" />
+                    </div>
+                    <div class="field full">
+                        <label for="about">About</label>
+                        <textarea id="about" rows="3" placeholder="Brief description for your profile."></textarea>
+                    </div>
+                    <div class="field">
+                        <label for="location">Location</label>
+                        <input id="location" type="text" placeholder="City, Country" autocomplete="address-level1" />
+                    </div>
+                    <div class="field">
+                        <label for="experience">Experience level</label>
+                        <select id="experience">
+                            <option value="">Select level</option>
+                            <option value="entry">Entry</option>
+                            <option value="mid">Mid</option>
+                            <option value="senior">Senior</option>
+                            <option value="lead">Lead</option>
+                        </select>
+                    </div>
+                </form>
+                <p id="statusMsg" class="muted small"></p>
+            </section>
+        </div>
+    </main>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/components/sidebar_animation_jobseeker.js?v=6"></script>
+    <script src="/js/pages/jobseeker/settings.js?v=1"></script>
+    <script>
+        fetch('/pages/components/navbar.html')
+            .then(r => r.ok ? r.text() : '')
+            .then(html => { if (html) document.getElementById('navbar').innerHTML = html; })
+            .catch(() => {});
+    </script>
+</body>
+</html>

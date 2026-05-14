@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candidates — Company - JobGenix AI</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css" />
+    <link rel="stylesheet" href="/css/pages/company/candidates.css" />
+</head>
+<body class="company-layout pushed" id ="main-content">
+
+      <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/jobs/create.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/post_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Post Job</span>
+            </a>
+            <a href="/pages/company/jobs/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/my_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">My Jobs</span>
+            </a>
+            <a href="/pages/company/candidates/list.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/candidate.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Candidates</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/applications.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/company/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="/pages/company/settings/profile.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <header class="top-bar">
+            <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+                <div class="header-text-group">
+                    <h1 class="page-title">Candidates</h1>
+                    <p class="page-subtitle">Review applicants and talent matched to your roles.</p>
+                </div>
+            </div>
+
+            <div class="top-bar-actions">
+                <a href="/pages/company/jobs/create.html" class="btn btn-primary">+ Post New Job</a>
+            </div>
+    </header>
+
+    <!-- MAIN -->
+    <div class="content-section">
+        <section class="candidates-content">
+            <article class="card filter-card">
+                <div class="filters">
+                    <div class="form-group">
+                        <label for="filterSearch" class="form-label">Search</label>
+                        <input type="text" id="filterSearch" class="form-control" placeholder="Search by name, title, or skill" />
+                    </div>
+                    <div class="form-group">
+                        <label for="filterExperience" class="form-label">Experience</label>
+                        <select id="filterExperience" class="form-control">
+                            <option value="">Any</option>
+                            <option value="intern">Intern</option>
+                            <option value="entry">Entry</option>
+                            <option value="mid">Mid</option>
+                            <option value="senior">Senior</option>
+                            <option value="lead">Lead</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="filterLocation" class="form-label">Location</label>
+                        <input type="text" id="filterLocation" class="form-control" placeholder="City or country" />
+                    </div>
+                    <div class="field actions">
+                        <button id="applyFiltersBtn" class="btn btn-primary">Search</button>
+                        <button id="clearFiltersBtn" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card candidates-list-card">
+                <header class="panel-header">
+                    <div>
+                        <h3>Talent Pool</h3>
+                        <p class="panel-subtitle">Recent applicants and matched candidates.</p>
+                    </div>
+                    <div class="panel-meta" id="candidateCount"></div>
+                </header>
+
+                <div id="candidatesList" class="candidates-list">
+                    <p class="panel-placeholder">Loading candidates...</p>
+                </div>
+            </article>
+        </section>
+    </div>
+
+    <script src="/js/pages/company/candidates.js?v=2" defer></script>
+    <script src="/js/components/sidebar_animation.js?v=5"></script>
+    <style>
+
+    </style>
+</body>
+</html>

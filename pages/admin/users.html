@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users - JobMatch AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/pages/admin/dashboard.css">
+</head>
+<body class="admin-dashboard">
+    <div id="sidebar"></div>
+    <main class="main-content">
+        <div id="navbar"></div>
+        <div class="dashboard-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="user-welcome">
+                        <h1>Manage Users</h1>
+                        <p>Review or filter by user type and status.</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="refreshUsers">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <button class="btn btn-outline" id="adminUsersLogout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="panel-card" style="margin-bottom:1.5rem;">
+            <div class="panel-card-header">
+                <div>
+                    <p class="panel-title">Filters</p>
+                </div>
+            </div>
+            <div class="user-filter-grid">
+                <input type="text" id="userSearch" placeholder="Search by name or email" class="form-input" />
+                <select id="userTypeFilter" class="form-input">
+                    <option value="">All users</option>
+                    <option value="job_seeker">Job Seekers</option>
+                    <option value="company">Companies</option>
+                    <option value="admin">Admins</option>
+                </select>
+                <button class="btn btn-primary" id="applyFilter">Apply</button>
+            </div>
+        </section>
+        <section class="panel-card">
+            <div class="panel-card-header">
+                <h3>Users</h3>
+                <span class="panel-subtitle" id="userCount">0 users</span>
+            </div>
+            <div class="table-responsive">
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userRows">
+                        <tr><td colspan="6" class="table-placeholder">Loading users…</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script>
+        (function ensureAdminAuth() {
+            try {
+                const keys = ['authToken', 'token', 'jobgenix_token'];
+                const token = keys.map((k) => localStorage.getItem(k)).find(Boolean);
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                if (!token || !user.user_type || user.user_type !== 'admin') {
+                    history.replaceState(null, '', '/pages/auth/login.html');
+                    window.location.replace('/pages/auth/login.html');
+                }
+            } catch (err) {
+                window.location.replace('/pages/auth/login.html');
+            }
+        })();
+    </script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/pages/admin/users.js"></script>
+    <script>
+        fetch('../../components/sidebar.html')
+            .then((response) => (response.ok ? response.text() : ""))
+            .then((html) => {
+                if (html) {
+                    document.getElementById('sidebar').innerHTML = html;
+                }
+            });
+        fetch('../../components/navbar.html')
+            .then((response) => (response.ok ? response.text() : ""))
+            .then((html) => {
+                if (html) {
+                    document.getElementById('navbar').innerHTML = html;
+                }
+            });
+    </script>
+</body>
+</html>

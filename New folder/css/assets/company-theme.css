@@ -1,0 +1,143 @@
+/* ================================
+   JOBMATCH COMPANY THEME (PROFESSIONAL)
+===================================*/
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fb;
+}
+
+.company-layout {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.company-sidebar {
+    width: 260px;
+    background: #0d1b3d;
+    color: white;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.company-logo {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0 25px 20px 25px;
+    color: #ffffff;
+}
+
+.company-sidebar a {
+    padding: 15px 25px;
+    color: #adb5bd;
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.company-sidebar a:hover,
+.company-sidebar a.active {
+    background: #1a2c57;
+    color: #fff;
+}
+
+/* MAIN CONTENT */
+.company-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+/* TOPBAR */
+.company-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.company-topbar h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.btn-primary {
+    padding: 10px 18px;
+    background: #2d6cff;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #1c54d4;
+}
+
+/* METRICS GRID */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.metric-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.metric-title {
+    font-size: 14px;
+    color: #888;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* CARDS */
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* RECENT LISTS */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.candidate-name {
+    font-weight: 600;
+}
+
+.small-text {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.match-score {
+    font-weight: bold;
+    color: #2d6cff;
+}
+

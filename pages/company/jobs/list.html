@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Jobs – Company - JobGenix AI</title>
+
+
+    <!-- Page specific -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css" />
+    <link rel="stylesheet" href="/css/pages/company/jobs.css" />
+</head>
+
+<body class="company-layout pushed" id ="main-content">
+
+   
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/jobs/create.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/post_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Post Job</span>
+            </a>
+            <a href="/pages/company/jobs/list.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/my_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">My Jobs</span>
+            </a>
+            <a href="/pages/company/candidates/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/candidate.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Candidates</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/applications.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/company/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="/pages/company/settings/profile.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <header class="top-bar">
+            <div class="top-bar-left">
+                <div class="header-row-container">
+                    <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                        <img src="../../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                    </button>
+                </div>
+                <div class="header-text-group">
+                    <h1 class="page-title">My Jobs & Company Profile</h1>
+                    <p class="page-subtitle">
+                        Edit your company details and manage all active job postings.
+                    </p>
+                </div>
+            </div>
+
+            <div class="top-bar-actions">
+                <a href="/pages/company/jobs/create.html" class="btn btn-primary">
+                + Post New Job
+                </a>
+            </div>
+        </header>
+        
+    <!-- MAIN CONTENT -->
+    <main class="content-section">
+        <section class="myjobs-layout">
+            <!-- LEFT: COMPANY PROFILE -->
+            <article class="card company-profile-card">
+                <div class="form-section">
+                    <h3>Company Profile</h3>
+                <div class="form-group">
+                    <form id="companyProfileForm" class="company-profile-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="companyName" class="form-label">Company Name</label>
+                                <input id="companyName" name="company_name" type="text" class="form-control" placeholder="e.g. JobMatch Technologies" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry">Industry</label>
+                                <input id="industry" name="industry" type="text" class="form-control" placeholder="e.g. Software, HR Tech" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="companySize">Company Size</label>
+                                <select id="companySize" name="company_size" class="form-control">
+                                    <option value="">Select size</option>
+                                    <option value="1-10">1-10</option>
+                                    <option value="11-50">11-50</option>
+                                    <option value="51-200">51-200</option>
+                                    <option value="201-500">201-500</option>
+                                    <option value="501-1000">501-1000</option>
+                                    <option value="1000+">1000+</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input id="website" name="website" type="url" class="form-control" placeholder="https://yourcompany.com" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactEmail">Contact Email</label>
+                                <input id="contactEmail" name="contact_email" type="email" class="form-control" placeholder="talent@yourcompany.com" />
+                            </div>
+                        </div>
+
+                            <div class="form-group-full-width">
+                                <label for="description">Company Description</label>
+                                <textarea id="description" name="description" rows="4" class="form-control"
+                                        placeholder="Short summary about your mission, culture, and the roles you are hiring for."></textarea>
+                            </div>
+
+                        <div class="form-actions-right">
+                            <button type="submit" class="btn btn-primary">
+                                Save Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+
+            </article>
+
+            <!-- RIGHT: JOB LIST -->
+            <article class="card jobs-list-card">
+                <div class="form-section">
+                    <h3>Active Job Postings</h3>
+
+                    <div id="companyJobsList" class="panel-body jobs-list">
+                        <p class="panel-placeholder">Loading your jobs...</p>
+                    </div>
+                </div>
+
+            </article>
+        </section>
+    </main>
+
+    <script src="/js/pages/company/jobs.js" defer></script>
+    <script src="/js/components/sidebar_animation.js?v=5"></script>
+    
+</body>
+
+</html>

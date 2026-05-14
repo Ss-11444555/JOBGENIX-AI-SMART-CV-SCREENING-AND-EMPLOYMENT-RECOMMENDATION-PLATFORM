@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Settings — Company - JobGenix AI</title>
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css" />
+    <link rel="stylesheet" href="/css/pages/company/settings.css" />
+</head>
+<body class="company-layout pushed" id ="main-content">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item ">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/jobs/create.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/post_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Post Job</span>
+            </a>
+            <a href="/pages/company/jobs/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/my_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">My Jobs</span>
+            </a>
+            <a href="/pages/company/candidates/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/candidate.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Candidates</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/applications.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/company/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="/pages/company/settings/profile.html" class="nav-item active">
+                <span class="nav-icon">
+                   <img src="../../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <header class="top-bar">
+        <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+                <div class="header-text-group">
+                <h1 class="page-title">Settings</h1>
+                <p class="page-subtitle">Manage your company profile and contact details.</p>
+            </div>
+        </div>
+            <div class="top-bar-actions">
+                <button id="saveProfileBtn" class="btn btn-primary">Save Changes</button>
+            </div>
+    </header>
+
+    <!-- MAIN -->
+    <div class="content-section">
+        <section class="settings-grid">
+            <article class="card company-profile-card">
+            <div class="form-section">
+                <header class="panel-header">
+                        <h3>Company Profile</h3>
+                        <p class="panel-subtitle">Public details shown on your jobs.</p>
+
+                        <div id="profileStatus" class="status-pill">Draft</div>
+                </header>
+
+                <form id="companySettingsForm" class="settings-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="companyName" class="form-label" >Company Name</label>
+                            <input id="companyName" name="company_name" type="text" class="form-control" placeholder="e.g. JobMatch Technologies" />
+                        </div>
+                        <div class="form-group">
+                            <label for="industry" class="form-label">Industry</label>
+                            <input id="industry" name="industry" type="text" class="form-control" placeholder="e.g. Software, HR Tech" />
+                        </div>
+                        <div class="form-group">
+                            <label for="companySize" class="form-label">Company Size</label>
+                            <select id="companySize" name="company_size" class="form-control">
+                                <option value="">Select size</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-200">51-200</option>
+                                <option value="201-500">201-500</option>
+                                <option value="501-1000">501-1000</option>
+                                <option value="1000+">1000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="website" class="form-label">Website</label>
+                            <input id="website" name="website" type="url" class="form-control" placeholder="https://yourcompany.com" />
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">Contact Email</label>
+                            <input id="contactEmail" name="contact_email" type="email" class="form-control" placeholder="talent@yourcompany.com" />
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description" class="form-label">Company Description</label>
+                            <textarea id="description" name="description" rows="4" class="form-control" placeholder="Short summary about your mission, culture, and the roles you are hiring for."></textarea>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </article>
+
+            <article class="card candidates-list-card">
+                <header class="panel-header">
+                        <h3>Account</h3>
+                        <p class="panel-subtitle">Key details for your company account.</p>
+                </header>
+                <div class="account-summary">
+                    <div>
+                        <div class="label">Account Type</div>
+                        <div class="value">Company</div>
+                    </div>
+                    <div>
+                        <div class="label">Status</div>
+                        <div class="value badge badge-success">Active</div>
+                    </div>
+                </div>
+            </article>
+        <!-- </section> -->
+    </div>
+
+    <script src="/js/pages/company/settings.js" defer></script>
+    <script src="/js/components/sidebar_animation.js?v=5"></script>
+
+</body>
+</html>

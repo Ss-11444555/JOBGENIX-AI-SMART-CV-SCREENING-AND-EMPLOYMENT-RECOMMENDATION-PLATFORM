@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - JobGenix AI</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body.auth-page {
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, #e8f0ff 0, #dfe8f7 45%, #d9e0f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .auth-container {
+            width: 100%;
+            max-width: 520px;
+            position: relative;
+        }
+        .auth-card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 20px 70px rgba(37, 99, 235, 0.18), 0 8px 30px rgba(15, 23, 42, 0.12);
+            overflow: hidden;
+            background: #ffffff;
+            animation: fadeUp 0.7s ease forwards;
+            opacity: 0;
+        }
+        .auth-header {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: #fff;
+            padding: 28px 28px 18px;
+            text-align: center;
+        }
+        .auth-logo {
+            font-size: 20px;
+            gap: 10px;
+        }
+        .auth-badge {
+            background: rgba(255,255,255,0.16);
+            border: 1px solid rgba(255,255,255,0.28);
+        }
+        .auth-body {
+            padding: 26px 26px 18px;
+        }
+        .social-login .social-button {
+            border-radius: 12px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .social-login .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(37, 99, 235, 0.12);
+        }
+        .auth-divider span {
+            background: #fff;
+            padding: 0 8px;
+        }
+        .auth-form .form-control {
+            border-radius: 12px;
+            border: 1px solid #dbeafe;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        .auth-form .form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
+        .auth-submit {
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .auth-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 38px rgba(37, 99, 235, 0.28);
+        }
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 48px; /* space for eye icon */
+        z-index: 1;
+
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    color: #64748b;
+        z-index: 10;
+
+}
+
+.toggle-password:hover {
+    color: #2563eb;
+}
+
+.toggle-password i {
+    pointer-events: none; /* ensure button receives click */
+}
+
+.password-input input[type="password"] {
+    -webkit-text-security: disc;
+}
+
+.password-input input[type="text"] {
+    -webkit-text-security: none !important;
+}
+
+
+
+        .auth-footer {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 18px;
+        }
+        .user-type-card {
+            border-radius: 14px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .user-type-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.14);
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="auth-page login-hidden" style="opacity:0; animation: fadeUp 0.4s ease forwards;">
+    <style>
+        .login-hidden {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        (function guardLoginRedirect() {
+            const body = document.body;
+            const keys = ['authToken', 'token', 'jobgenix_token'];
+            const token = keys.map((key) => localStorage.getItem(key)).find(Boolean);
+            let user = null;
+            try {
+                user = JSON.parse(localStorage.getItem('user') || '{}');
+            } catch (_) {
+                user = null;
+            }
+            const getDashboardUrl = (type) => {
+                switch (type) {
+                    case 'job_seeker':
+                        return '/pages/jobseeker/dashboard.html';
+                    case 'company':
+                        return '/pages/company/dashboard.html';
+                    case 'admin':
+                        return '/pages/admin/dashboard.html';
+                    default:
+                        return '/pages/auth/login.html';
+                }
+            };
+            if (token && user?.user_type) {
+                const target = getDashboardUrl(user.user_type);
+                history.replaceState(null, '', target);
+                window.location.replace(target);
+                return;
+            }
+            body.classList.remove('login-hidden');
+        })();
+    </script>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>JobGenix</span>
+                    <span class="auth-badge">AI</span>
+                </div>
+                <h1>Welcome Back</h1>
+                <p>Sign in to your JobGenix AI account</p>
+            </div>
+            
+            <div class="auth-body">
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="loginEmail" class="form-label">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-control" placeholder="you@example.com" required>
+                        <div class="form-error" id="emailError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please enter a valid email address</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword" class="form-label">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required>
+                            <button type="button" id="hidebtn" class="toggle-password">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="form-error" id="passwordError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span>Please enter your password</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="forgot-password">
+                            <a href="reset-password.html" class="auth-link">
+                                <i class="fas fa-question-circle"></i> Forgot your password?
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+                
+                <div class="auth-divider">
+                    <span>New to JobGenix AI?</span>
+                </div>
+                
+                <div class="user-type-selection">
+                    <a href="register-jobseeker.html" class="user-type-card job-seeker">
+                        <div class="user-type-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Job Seeker</h3>
+                        <p>Find your dream job with AI-powered recommendations</p>
+                        <span class="btn btn-outline btn-sm mt-3">Register</span>
+                    </a>
+                    
+                    <a href="register-company.html" class="user-type-card company">
+                        <div class="user-type-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Company</h3>
+                        <p>Hire top talent with intelligent matching</p>
+                        <span class="btn btn-outline btn-sm mt-3">Register</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="auth-footer">
+                <p>By signing in, you agree to our <a href="#" class="auth-link">Terms</a> and <a href="#" class="auth-link">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/app.js"></script>
+    <script>
+        // Form submission
+        const form = document.getElementById('loginForm');
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const nextPath = urlParams.get('next');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Validate form
+            let isValid = true;
+            
+            if (!email) {
+                document.getElementById('emailError').style.display = 'flex';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+            
+            if (!password) {
+                document.getElementById('passwordError').style.display = 'flex';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+            
+            if (!isValid) return;
+            
+            // Use the global JobGenixApp for login
+            const submitBtn = form.querySelector('.auth-submit');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+            submitBtn.disabled = true;
+            
+            try {
+                await window.JobGenixApp.handleLogin(form, { redirectUrl: nextPath });
+            } catch (error) {
+                console.error('Login error:', error);
+                window.JobGenixApp.showAlert('Login failed. Please try again.', 'error');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+        
+        // Social login buttons
+        document.querySelectorAll('.social-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const provider = this.classList.contains('google') ? 'google' : 'linkedin';
+                window.JobGenixApp.showAlert(`Signing in with ${provider}... (Demo)`, 'info');
+            });
+        });
+        
+        // Password toggle
+        document.getElementById('hidebtn').forEach(button => {
+            button.addEventListener('click', function () {
+
+                const input = this.closest('.password-input').querySelector('input');
+                const icon = this.querySelector('i');
+
+                if (input.type === 'password') {
+                    input.type = 'text';                 // 👁 show password
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';             // 🙈 hide password
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+
+
+        
+        // User type selection cards
+        document.querySelectorAll('.user-type-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.btn')) {
+                    this.click(); // Follow the link
+                }
+            });
+        });
+    </script>
+</body>
+</html>

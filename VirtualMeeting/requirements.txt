@@ -1,0 +1,11 @@
+flask
+pandas
+numpy
+scikit-learn==1.6.1
+PyPDF2
+python-docx
+openpyxl
+openai
+python-dotenv
+pyaudio
+requests

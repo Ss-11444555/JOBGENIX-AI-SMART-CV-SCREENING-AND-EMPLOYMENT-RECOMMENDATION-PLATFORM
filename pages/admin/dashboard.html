@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - JobMatch AI</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/pages/admin/dashboard.css">
+    <link rel="stylesheet" href="../../css/pages/admin/dashboard.css?v=2"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-dashboard login-hidden">
+    <style>
+        .login-hidden {
+            visibility: hidden;
+        }
+    </style>
+    <script>
+        (function ensureAdminAuth() {
+            const keys = ['authToken', 'token', 'jobgenix_token'];
+            const token = keys.map((key) => localStorage.getItem(key)).find(Boolean);
+            let user = null;
+            try {
+                user = JSON.parse(localStorage.getItem('user') || '{}');
+            } catch (_) {
+                user = null;
+            }
+            const redirectToLogin = () => {
+                history.replaceState(null, '', '/pages/auth/login.html');
+                window.location.replace('/pages/auth/login.html');
+            };
+            if (!token || !user?.user_type || user.user_type !== 'admin') {
+                redirectToLogin();
+                return;
+            }
+            document.body.classList.remove('login-hidden');
+        })();
+    </script>
+    <!-- Sidebar (Component) -->
+    <div id="sidebar"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Navbar (Component) -->
+        <div id="navbar"></div>
+
+          <!-- Quick Actions -->
+            <div class="quick-actions-section">
+                <h3 class="section-title"> Quick Actions</h3>
+                <div class="quick-actions-grid">
+                    <a href="/pages/admin/users.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <h4>Manage Users</h4>
+                        <p>View, edit, or suspend user accounts</p>
+                    </a>
+                    
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="user-welcome">
+                        <h1>👑 Admin Dashboard</h1>
+                        <p>Manage the entire JobMatch AI platform</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="refreshStats">
+                            <i class="fas fa-sync-alt"></i> Refresh Stats
+                        </button>
+                        <button class="btn btn-danger" id="systemHealth">
+                            <i class="fas fa-heartbeat"></i> System Health
+                        </button>
+                        <button class="btn btn-outline" id="adminLogoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Admin Stats -->
+            <div class="admin-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                        <div class="stat-breakdown">
+                            <span class="breakdown-item">
+                                <i class="fas fa-user-tie"></i> <span id="jobSeekers">0</span>
+                            </span>
+                            <span class="breakdown-item">
+                                <i class="fas fa-building"></i> <span id="companies">0</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalJobs">0</h3>
+                        <p>Active Jobs</p>
+                        <div class="stat-breakdown">
+                            <span class="breakdown-item">
+                                <i class="fas fa-check-circle"></i> <span id="activeJobs">0</span>
+                            </span>
+                            <span class="breakdown-item">
+                                <i class="fas fa-clock"></i> <span id="pendingJobs">0</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalApplications">0</h3>
+                        <p>Applications</p>
+                        <div class="stat-breakdown">
+                            <span class="breakdown-item">
+                                <i class="fas fa-check"></i> <span id="hired">0</span>
+                            </span>
+                            <span class="breakdown-item">
+                                <i class="fas fa-video"></i> <span id="interviews">0</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="aiMatches">0</h3>
+                        <p>AI Matches</p>
+                        <div class="stat-breakdown">
+                            <span class="breakdown-item">
+                                <i class="fas fa-percentage"></i> <span id="matchRate">0%</span>
+                            </span>
+                            <span class="breakdown-item">
+                                <i class="fas fa-bolt"></i> <span id="successRate">0%</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="panel-card quick-actions-panel">
+                <div class="panel-card-header">
+                    <h3>Admin Actions</h3>
+                    <span class="link-muted">Manage live content</span>
+                </div>
+                <div class="quick-actions-grid">
+                    <a href="/pages/admin/jobs.html" class="action-card">
+                        <div class="action-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h4>Job Moderation</h4>
+                        <p>Review and delete postings that should no longer appear.</p>
+                    </a>
+                </div>
+            </section>
+
+            <div class="admin-insights-grid">
+                <section class="panel-card pending-approvals-card">
+                    <div class="panel-card-header">
+                        <h3>Pending Job Approvals</h3>
+                        <a href="/pages/admin/jobs.html" class="link-muted">View all</a>
+                    </div>
+                    <div id="pendingJobsList" class="panel-card-list">
+                        <p class="panel-placeholder">Loading pending approvals…</p>
+                    </div>
+                </section>
+                <section class="panel-card audit-card">
+                    <div class="panel-card-header">
+                        <h3>Recent User Audits</h3>
+                        <a href="/pages/admin/users.html" class="link-muted">View users</a>
+                    </div>
+                    <div id="auditList" class="panel-card-list">
+                        <p class="panel-placeholder">Loading audit history…</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity-section">
+                <div class="section-header">
+                    <h3> Recent System Activity</h3>
+                    <button class="btn btn-sm btn-outline" id="viewAllActivity">View All</button>
+                </div>
+                <div class="activity-list" id="activityList">
+                    <!-- Activity will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="../../js/app.js"></script>
+    <script>
+        (function ensureSecurePage(userType) {
+            try {
+                const keys = ['authToken', 'token', 'jobgenix_token'];
+                const token = keys.map((k) => localStorage.getItem(k)).find(Boolean);
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                if (!token || !user.user_type || user.user_type !== userType) {
+                    history.replaceState(null, '', '/pages/auth/login.html');
+                    window.location.replace('/pages/auth/login.html');
+                }
+            } catch (err) {
+                window.location.replace('/pages/auth/login.html');
+            }
+        })('admin');
+    </script>
+    <script src="../../js/pages/admin/dashboard.js"></script>
+    <script>
+        // Load components
+        fetch('../../components/sidebar.html')
+            .then((response) => (response.ok ? response.text() : ""))
+            .then((data) => {
+                if (data) {
+                    document.getElementById('sidebar').innerHTML = data;
+                }
+            });
+
+        fetch('../../components/navbar.html')
+            .then((response) => (response.ok ? response.text() : ""))
+            .then((data) => {
+                if (data) {
+                    document.getElementById('navbar').innerHTML = data;
+                }
+            });
+    </script>
+</body>
+</html>

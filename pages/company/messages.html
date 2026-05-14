@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages — Company - JobGenix AI</title>
+
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css" />
+    <link rel="stylesheet" href="/css/pages/company/messages.css" />
+</head>
+<body class="company-layout pushed" id ="main-content">
+     <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/jobs/create.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/post_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Post Job</span>
+            </a>
+            <a href="/pages/company/jobs/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/my_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">My Jobs</span>
+            </a>
+            <a href="/pages/company/candidates/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/candidate.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Candidates</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/applications.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/company/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="/pages/company/settings/profile.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+    <header class="top-bar">
+            <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+                <div class="header-text-group">
+                <h1 class="page-title">Messages</h1>
+                <p class="page-subtitle">Conversations with candidates and interview invites.</p>
+            </div>
+            </div>
+
+            <div class="top-bar-actions">
+                <button class="btn btn-secondary" id="refreshBtn">Refresh</button>
+            </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="content-section">
+        <section class="messages-layout">
+            <aside class="conversations card">
+                <header class="panel-header">
+                    <h3>Conversations</h3>
+                </header>
+                <div id="conversationList" class="conversation-list">
+                    <p class="panel-placeholder">Loading conversations...</p>
+                </div>
+            </aside>
+
+            <section class="chat card">
+                <header class="chat-header">
+                    <div>
+                        <div class="chat-title" id="chatTitle">Select a conversation</div>
+                        <div class="chat-subtitle" id="chatSubtitle"></div>
+                    </div>
+                    <div class="chat-meta" id="chatMeta"></div>
+                </header>
+
+                <div id="chatMessages" class="chat-messages">
+                    <p class="panel-placeholder">No conversation selected.</p>
+                </div>
+
+                <footer class="chat-input">
+                    <textarea id="messageInput" placeholder="Type a message..." rows="2"></textarea>
+                    <button id="sendBtn" class="btn btn-primary">Send</button>
+                </footer>
+            </section>
+        </section>
+    </main>
+
+    <script src="/js/pages/company/messages.js" defer></script>
+    <script src="/js/components/sidebar_animation.js?v=5"></script>
+
+</body>
+</html>

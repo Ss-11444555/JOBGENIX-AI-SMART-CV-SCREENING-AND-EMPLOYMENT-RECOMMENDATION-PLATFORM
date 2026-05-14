@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <title>Company Dashboard - JobGenix AI</title>
+
+    <!-- Page specific -->
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/pages/company/side_bar.css?v=2" />
+    <link rel="stylesheet" href="/css/pages/company/dashboard.css?v=2" />
+
+</head>
+<body class="company-layout pushed" id ="main-content">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-company open">
+        <div class="sidebar-brand">
+            <div class="brand-title">JobGenix AI</div>
+            <div class="brand-pill">Company</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="/pages/company/dashboard.html" class="nav-item active">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/overview.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Overview</span>
+            </a>
+            <a href="/pages/company/jobs/create.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/post_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Post Job</span>
+            </a>
+            <a href="/pages/company/jobs/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/my_job.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">My Jobs</span>
+            </a>
+            <a href="/pages/company/candidates/list.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/candidate.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Candidates</span>
+            </a>
+            <a href="/pages/company/messages.html" class="nav-item">
+                <span class="nav-icon">
+                    <img src="../../css/assets/images/message.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Messages</span>
+            </a>
+            <a href="/pages/company/applications.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/application.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Applications</span>
+            </a>
+            <a href="/pages/company/analytics.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/analytics.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Analytics</span>
+            </a>
+            <a href="/pages/company/settings/profile.html" class="nav-item">
+                <span class="nav-icon">
+                   <img src="../../css/assets/images/settings.png" alt="Navigation Icon" class="icon-image">
+                </span>
+                <span class="nav-label">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="companyLogoutBtn" class="btn btn-ghost">
+                Logout
+            </button>
+        </div>
+    </aside>
+
+        <!-- TOP BAR -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+            <div class="header-row-container">
+                <button class="menu-button" aria-expanded="false" aria-controls="sidebar-menu">
+                    <img src="../../css/assets/images/menu-white.png" alt="Menu Icon" class="icon-image">
+                </button>
+            </div>
+                <div class="header-text-group">
+                    <h1 class="page-title">Welcome back!</h1>
+                    <p class="page-subtitle">Here’s your company hiring overview.</p>
+                </div>
+            </div>
+
+            <div class="top-bar-actions">
+                <a href="/pages/company/jobs/create.html" class="btn btn-primary">
+                    + Post New Job
+                </a>
+                <a href="/pages/company/reports.html" class="btn btn-primary">
+                    View Reports
+                </a>
+            </div>
+        </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="content-section">
+        <!-- SUMMARY METRICS -->
+        <section class="analytics-grid">
+            <article class="stat-card">
+                <div class="stat-icon stat-blue"></div>
+                <div>
+                    <h2 class="stat-label">Active Jobs</h2>
+                    <div id="metricActiveJobs" class="stat-value">-</div>   
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <!-- <div class="metric-icon metric-icon-mail"></div> -->
+                <div class="stat-icon stat-purple"></div>
+                <div>
+                    <h2 class="stat-label">New Applications</h2>
+                    <div id="metricApplications" class="stat-value">-</div>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <!-- <div class="metric-icon metric-icon-people"></div> -->
+                <div class="stat-icon stat-green"></div>
+                <div>
+                    <h2 class="stat-label">Interviews</h2>
+                    <div id="metricInterviews" class="stat-value">-</div>
+                </div>
+            </article>
+
+            <article class="stat-card">
+                <!-- <div class="metric-icon metric-icon-check"></div> -->
+                <div class="stat-icon stat-orange"></div>
+                <div>
+                    <h2 class="stat-label">New Hires</h2>
+                    <div id="metricHires" class="stat-value">-</div>
+                </div>
+            </article>
+        </section>
+
+        <!-- ACTIVE JOBS + RECENT CANDIDATES -->
+        <section class="bottom-row">
+            <!-- Active Jobs -->
+            <article class="card panel-card">
+                <header class="panel-header">
+                    <h2>Active Job Postings</h2>
+                    <a href="/pages/company/jobs/list.html" class="panel-link">View All</a>
+                </header>
+                <div id="activeJobsList" class="panel-body">
+                    <p class="panel-placeholder">Loading active jobs...</p>
+                </div>
+            </article>
+
+            <!-- Recent Candidates -->
+            <article class="card panel-card">
+                <header class="panel-header">
+                    <h2>Recent Candidates</h2>
+                    <a href="/pages/company/candidates/list.html" class="panel-link">View All</a>
+                </header>
+                <div id="recentCandidatesList" class="panel-body">
+                    <p class="panel-placeholder">Loading candidates...</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        (function ensureCompanyAuth() {
+            try {
+                const keys = ['authToken', 'token', 'jobgenix_token'];
+                const token = keys.map((k) => localStorage.getItem(k)).find(Boolean);
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                if (!token || !user.user_type || user.user_type !== 'company') {
+                    history.replaceState(null, '', '/pages/auth/login.html');
+                    window.location.replace('/pages/auth/login.html');
+                }
+            } catch (err) {
+                window.location.replace('/pages/auth/login.html');
+            }
+        })();
+    </script>
+    <script src="/js/pages/company/dashboard.js?v=9"></script>
+    <script src="/js/components/sidebar_animation.js?v=6"></script>
+
+
+
+</body>
+</html>
+
+
+
+
+<!-- version bump for cache -->
