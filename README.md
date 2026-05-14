@@ -215,9 +215,3 @@ POPPLER_BIN=path_to_poppler_bin
 - Poppler installed if PDF OCR is used
 - OpenAI API key for virtual interview, transcription, and text-to-speech features
 
-## Important Notes
-
-- Do not upload `.env` to GitHub because it contains private credentials.
-- Do not upload virtual environment folders such as `venv` or `venv311`.
-- Uploaded CVs, generated audio files, and temporary files should stay outside GitHub.
-- Large model files may require Git LFS if GitHub rejects them during upload.
